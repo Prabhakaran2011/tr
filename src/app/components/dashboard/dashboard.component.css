@@ -1,0 +1,63 @@
+.parallax {
+    /* The image used */
+    background-image: url("../../../assets/images/banner.png");
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bannerText {
+    line-height: 500px;
+    float: right;
+    margin-right: 10px;
+    font-size: 4em;
+    color: white;
+}
+
+
+.thumbnails{
+    padding: 3px;
+    font-size: 100%;
+    color: #767676;
+    line-height: 1.3em;
+    position: relative;
+    word-wrap: break-word; 
+}
+
+.card {
+    display: block;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 4px;
+
+    margin: 3px;
+    background-color: #fff;
+        
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card.image{
+    width: 98%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.truncate {
+    height: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
