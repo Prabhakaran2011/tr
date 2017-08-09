@@ -1,62 +1,15 @@
-<div class="parallax">
-  <span class="bannerText">TechReels</span>
-</div>
-
 <div class="container">
-  <div class="row">
-      <div class="col-sm-12 col-md-9 col-lg-9">
-        <div class="row">
-          <div class='col-md-4 col-sm-6 thumbnails' style='height:auto;min-height: 300px' *ngFor="let videoLists of videosLists">
-            <div class='card image'>
-              <a href={{videoLists.url}} target='_blank'>
-                <img src={{videoLists.videothumbnail}} class='videoThumbnail thumbnailImage' style="width: 100%;border-bottom: #767676 1px solid;" alt={{videoLists.videotitle}} title={{videoLists.videotitle}} />
-              </a>
-              <div style='padding-left:5px; padding-right:5px' class="content">
-                <div style="height:33px">
-                  <h4 class='truncate' style="font-size: 15px;">
-                    <a href={{videoLists.url}} target='_blank'>{{videoLists.videotitle}}</a>
-                  </h4>
-                </div>
-                <hr/>
-                <div style="height:50px">
-                  <div class='truncate'>{{videoLists.videodescription}}</div>
-                </div> 
-                <hr style="margin-bottom: 10px!important"/>
-                <div class="" style="margin-bottom: 4px"> Published on : {{videoLists.videodate}}</div>
-              </div>
-            </div>
-          </div>
+  <div class="mostWatched">
+    <h2><span>Most Watched</span><hr></h2>
+    <ul>
+      <li *ngFor="let videoList of mostWatchedVideosLists">
+        <div class='cards'>
+          <a href={{videoList.url}} target='_blank'>
+            <img src={{videoList.videothumbnail}} class='videoThumbnail thumbnailImage' style="width: 100%;border-bottom: #767676 1px solid;" alt={{videoList.videotitle}} title={{videoList.videotitle}} />
+          </a>
+          <div class="videoTitle"><h1><a href={{videoList.url}} target='_blank'>{{videoList.videotitle}}</a></h1></div>
         </div>
-        <hr>
-        Most Watched Videos
-        <br>
-        <div class="row">
-          <div class='col-md-4 col-sm-6 thumbnails' style='height:auto;min-height: 350px' *ngFor="let videoList of mostWatchedVideosLists">
-            <div class='card imgage'>
-              <a href={{videoList.url}} target='_blank'>
-                <img src={{videoList.videothumbnail}} class='videoThumbnail thumbnailImage' style="width: 100%;border-bottom: #767676 1px solid;" alt={{videoList.videotitle}} title={{videoList.videotitle}} />
-              </a>
-              <div style='padding-left:5px; padding-right:5px' class="content">
-                <div style="height:33px">
-                  <h4 class='truncate' style="font-size: 15px;">
-                    <a href={{videoList.url}} target='_blank'>{{videoList.videotitle}}</a>
-                  </h4>
-                </div>
-                <hr/>
-                <div style="height:50px">
-                  <div class='truncate'>{{videoList.videodescription}}</div>
-                </div> 
-                <hr style="margin-bottom: 10px!important"/>
-                <div class="" style="margin-bottom: 4px"> 
-                  Published on : {{videoList.videodate}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-3 col-lg-3" style="height: 600px">
-          <a class="twitter-timeline" data-height="500" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/techreels">Tweets by techreels</a> 
-      </div>
-  </div>
-  </div>
+      </li>
+    </ul>
+  </div> 
+</div>
