@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 // components
 import { AppComponent } from './app.component';
@@ -19,8 +22,12 @@ import { HttpModule } from '@angular/http';
 // angular material
 import { MaterialModule } from '@angular/material';
 
-// third party plugins
+// angular2 firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database'
 
+// contant file
+import { constants } from "./shared/contants";
 
 @NgModule({
   declarations: [
@@ -33,12 +40,21 @@ import { MaterialModule } from '@angular/material';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     AppRoutingModule, 
     HttpModule,
     RouterModule,    
-    MaterialModule
+    AngularFireModule.initializeApp(constants.firebaseConfig),
+    FormsModule, 
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AngularFireDatabase],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(){
+    console.log(constants);
+  }
+}

@@ -1,6 +1,6 @@
 .header {
     background: #fff; 
-    color:#3e433e; 
+    color:#5b5d5f; 
     font-size:20px;
     font-weight: Bold; 
     height: 80px;
@@ -34,20 +34,56 @@
 }
 
 .navbar-default .navbar-nav>li:hover>a {
-    background: #efefef;
-    transition: 0.2s;
+    background: rgba(227,208,157,1);
+    color:#fff;
+    transition: background 0.5s;
 }
 
+.navbar-default .navbar-nav>li.active:hover>a, .navbar-default .navbar-nav>li.active > a{
+    background: rgba(227,208,157,1);
+    color: #fff;
+}
+
+.navbar-default .navbar-toggle {
+    border: none;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background: transparent;
+}
+
+.navbar-toggle .icon-bar {
+    width: 25px;
+    height: 3px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #5b5d5f;
+}
 /* Media Queries  */
 @media only screen and (max-width : 480px) {
     .webViewHeader {
         display: none;
+    }
+    .navbar-default .navbar-nav>li>a {
+        padding: 20px;
+    }
+    ul.nav.navbar-nav{
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 }
 
 @media only screen and (max-width : 767px) {
     .webViewHeader {
         display: none;
+    }
+    .navbar-default .navbar-nav>li>a {
+        padding: 20px;
+    }
+    ul.nav.navbar-nav{
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 }
 

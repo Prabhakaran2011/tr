@@ -5,13 +5,23 @@
 
 .four-zero-four {
     font-size: 150px;
-    color:#0fbcf7;
+    color :#5b5d5f;
 }
 
 .descrition {
     font-size: 29px;
     font-family: 'Prompt', sans-serif;
     color: #ccc;
+}
+
+button.mat-raised-button{
+    background: #fff;
+    color: #c8b682;
+}
+
+button.mat-raised-button:hover {
+    background: #c8b682;
+    color: #fff;
 }
 
 

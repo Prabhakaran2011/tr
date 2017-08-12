@@ -1,3 +1,17 @@
-.mat-sidenav-container{
-    height: 100vh;
+.scroll-to-top {
+    background: #c62127;
+    opacity: 0.5;
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 25px;
+    line-height: 58px;
+    font-size: 30px;
+    color: #fff;
+    position: fixed;
+    z-index: 999;
+    bottom: 30px;
+    right: 30px;
+    text-align: center;
 }
+
