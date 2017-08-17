@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServiceService } from '../../shared/service/service.service';
+import { FirebaseApp } from 'angularfire2';
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable  } from 'angularfire2/database'
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,58 +13,30 @@ import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable  
 })
 export class DashboardComponent implements OnInit {
 
-  private api_key: string = 'AIzaSyClYrtbjAV4VrIJ20O-Hd_0Kzpo4IYqxhs';
-  private maxVideosCount = 8;
-  private userId = 'UCHJavQMlBOBmxeo7zR6I3LQ';
   recommendedVideos: FirebaseListObservable<any[]>;
-  videosLists = [];
-  mostWatchedVideosLists = [];
+  recommendedVideosList = [];
+  image:string;
 
-  constructor(db: AngularFireDatabase, private _http: ServiceService, private router:Router) { 
-     this.recommendedVideos = db.list('recommendedVideos');
+  constructor(public db: AngularFireDatabase, private _http: ServiceService, private router:Router) { 
   }
 
-  bindVideosinView(result){
-    let videosList = result.items;
-    videosList.forEach(videos => {
-      let videothumbnail = videos.snippet.thumbnails.high.url; // default, medium or high
-
+  recommendedVideosListBind(list){
+    list.forEach(videos => {
+      const storageRef = firebase.storage().ref().child(videos.thumbnail);
+      let videothumbnail = storageRef.getDownloadURL().then(url => url);
+      
       let videoDetail = {
-        videoid : videos.id.videoId,
-        videotitle : videos.snippet.title,
-        videodescription : videos.snippet.description,
-        videodate : videos.snippet.publishedAt.split('T')[0], // date time published
-        videothumbnail : videothumbnail,
-        url : "https://www.youtube.com/watch?v=" + videos.id.videoId 
+        title : videos.title,
+        videothumbnail : videos.thumbnail,
+        videoId : "https://www.youtube.com/watch?v=" + videos.videoId 
       }
 
-      this.videosLists.push(videoDetail);
+      this.recommendedVideosList.push(videoDetail);
     });
-  }
-
-    bindmostwatchedVideosinView(result){
-      let videosList = result.items;
-      videosList.forEach(videos => {
-      let videothumbnail = videos.snippet.thumbnails.high.url; // default, medium or high
-
-      let videoDetail = {
-        videoid : videos.id.videoId,
-        videotitle : videos.snippet.title,
-        videodescription : videos.snippet.description,
-        videodate : videos.snippet.publishedAt.split('T')[0], // date time published
-        videothumbnail : videothumbnail,
-        url : "https://www.youtube.com/watch?v=" + videos.id.videoId 
-      }
-
-      this.mostWatchedVideosLists.push(videoDetail);
-      });
-    }
+    debugger;
+  };
 
   ngOnInit() {
-    // let videosApiUrl = "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=" + this.userId + "&maxResults=" + this.maxVideosCount + "&key=" + this.api_key
-    // this._http.getData(videosApiUrl).subscribe(detail => this.bindVideosinView(detail)); 
-
-    // let mostWatchedVideosApiUrl = "https://www.googleapis.com/youtube/v3/search?order=viewCount&part=snippet&channelId=" + this.userId + "&maxResults=" + 2 + "&key=" + this.api_key
-    // this._http.getData(mostWatchedVideosApiUrl).subscribe(detail => this.bindmostwatchedVideosinView(detail)); 
+    this.db.list('recommendedVideos').map(res => res).subscribe(res => {this.recommendedVideosListBind(res);});
   }
 }

@@ -17,7 +17,7 @@ import { AppRoutingModule } from './shared/app-routing/app-routing.module';
 import { RouterLinkActive, RouterModule } from '@angular/router';
 
 // services
-import { HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';// services
 
 // angular material
 import { MaterialModule } from '@angular/material';

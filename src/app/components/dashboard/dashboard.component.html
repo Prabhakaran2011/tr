@@ -2,10 +2,10 @@
   <div class="mostWatched">
     <h2><span>Most Watched</span><hr></h2>
     <ul>
-      <li *ngFor="let videoList of recommendedVideos | async">
+      <li *ngFor="let videoList of recommendedVideosList" class="col-xs-12 col-sm-6 col-md-4">
         <div class='cards'>
           <a href={{videoList.videoId}} target='_blank'>
-            <img src={{videoList.thumbnail}} class='videoThumbnail thumbnailImage' style="width: 100%;border-bottom: #767676 1px solid;" alt={{videoList.title}} title={{videoList.title}} />
+            <img src={{videoList.videothumbnail}} class='videoThumbnail thumbnailImage' style="width: 100%;border-bottom: #767676 1px solid;" alt={{videoList.title}} title={{videoList.title}} />
           </a>
           <div class="videoTitle"><h1><a href={{videoList.videoId}} target='_blank'>{{videoList.title}}</a></h1></div>
         </div>
